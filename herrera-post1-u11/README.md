@@ -173,16 +173,3 @@ Elegí la notificación **por evento individual**. Ventajas en este diseño: (1)
 - [x] Pruebas de caracterización de la Parte 1 sin modificar y en verde.
 - [x] Decisiones de diseño 1 a 4 documentadas con justificación.
 
-## Historial de commits
-
-| # | Commit | Parte |
-|---|---|---|
-| 1 | feat: crear inventario con Long Method… | 1 |
-| 2 | test: agregar pruebas de caracterizacion antes de refactorizar | 1 |
-| 3 | refactor: eliminar Long Method… | 1 |
-| 4 | refactor: eliminar switch duplicado… | 1 |
-| 5 | docs: documentar evidencia de code smells… | 1 |
-| 6 | feat: agregar modulo de reportes… | 2 |
-| 7 | test: agregar prueba de arquitectura… (en rojo) | 2 |
-| 8 | refactor: invertir la dependencia… | 2 |
-| 9 | docs: completar README… | 2 |
