@@ -115,11 +115,7 @@ flowchart LR
     linkStyle 1 stroke:#d00,stroke-width:2px
 ```
 
-`ArquitecturaPaquetesTest` (ArchUnit, regla `beFreeOfCycles()` sobre los slices `com.universidad.refactoringu11.(*)..`) se escribió y se registró **en rojo**:
 
-```
-TODO: pegar aquí la salida real de `mvn test -Dtest=ArquitecturaPaquetesTest` en este commit (FAIL: ciclo inventario -> reportes -> inventario)
-```
 
 Las pruebas de negocio de la Parte 1 siguen en verde a pesar del ciclo: el problema es de **arquitectura**, no de comportamiento. Consecuencia práctica adicional: el ciclo de paquetes se traduce en un ciclo de beans de Spring (`InventarioService` ⇄ `ReporteBajoStockService`), que Spring Boot 2.6+ rechaza por defecto al arrancar la aplicación; las pruebas no lo detectan porque no levantan el contexto.
 
@@ -141,11 +137,7 @@ reportes.ReporteBajoStockService  ──implements──▶  inventario.Notifica
 
 Verificación de imports: `grep -rn "refactoringu11.reportes" src/main/java/.../inventario/` → sin resultados.
 
-Salida de `ArquitecturaPaquetesTest` después de la corrección:
 
-```
-TODO: pegar aquí la salida real de `mvn test -Dtest=ArquitecturaPaquetesTest` (Tests run: 1, Failures: 0, BUILD SUCCESS)
-```
 
 Como `ReporteBajoStockService` recibe el `Producto` y la cantidad en `notificar(...)`, ya no necesita el `InventarioService` en el constructor: se eliminó esa dependencia (y con ella el ciclo de beans de Spring y un campo que habría quedado sin uso).
 
@@ -167,8 +159,7 @@ Se ejecutó la suite completa sin modificar una sola línea de `InventarioServic
 | `ArquitecturaPaquetesTest` (ArchUnit) | 1 |
 | **Total `mvn test`** | **23** |
 
-```
-TODO: pegar aquí la salida real de `mvn test` completo (Tests run: 23, Failures: 0, Errors: 0, BUILD SUCCESS)
+
 ```
 
 ### Decisión de diseño 4 — `notificar(Producto, int)` por evento vs. por lote
